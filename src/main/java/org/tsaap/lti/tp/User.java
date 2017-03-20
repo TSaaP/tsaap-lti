@@ -405,7 +405,7 @@ public class User {
      */
     public boolean isLearner() {
 
-        return this.hasRole("Learner");
+        return this.hasRole("Learner") || this.hasRole("Student");
 
     }
 
