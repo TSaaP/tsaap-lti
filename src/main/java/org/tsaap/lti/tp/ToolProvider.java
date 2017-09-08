@@ -26,15 +26,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.*;
+import java.util.logging.Logger;
 
 
 /**
  * Class to represent an LTI Tool Provider.
  *
- * @author Stephen P Vickers
+ * @author Stephen P Vickers, Franck Silvestre
  * @version 1.1.01 (18-Jun-13)
  */
 public class ToolProvider {
+
+    private static Logger log =
+            Logger.getLogger(ToolProvider.class.getName());
 
     /**
      * LTI version for messages.
@@ -573,6 +577,7 @@ public class ToolProvider {
                     this.response.sendError(401, this.error);
                 }
             } catch (IOException e) {
+                log.severe(e.getMessage());
             }
         }
 
@@ -636,6 +641,7 @@ public class ToolProvider {
             try {
                 oAuthValidator.validateMessage(oAuthMessage, oAuthAccessor);
             } catch (Exception e) {
+                log.severe(e.getMessage() + "\n" + e.toString());
                 this.ok = false;
                 if (this.reason == null) {
                     this.reason = "OAuth signature check failed - perhaps an incorrect secret or timestamp.";
