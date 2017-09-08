@@ -6,7 +6,7 @@ apply plugin: 'groovy'
 
 
 group 'com.github.TSaaP'
-version '0.3'
+version '0.4-no-oauth-dep'
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -36,9 +36,9 @@ dependencies {
 }
 
 
-jar {
-    from {
-        def oauthJar = configurations.compile.find { it.name == 'ApacheJMeter_oauth-v2.jar' }
-        zipTree(oauthJar)
-    }
-}
+//jar {
+//    from {
+//        def oauthJar = configurations.compile.find { it.name == 'ApacheJMeter_oauth-v2.jar' }
+//        zipTree(oauthJar)
+//    }
+//}
